@@ -4,10 +4,17 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  background-color: #e5e7e6
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
 html {
   height: 100%;
+}
+
+* {
+  font-family: 'Russo One', sans-serif !important;
 }
 
 #root {
@@ -26,7 +33,7 @@ html {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #e5e7e6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
