@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import React, { useState } from 'react'
 
 function Form() {
+
     const [marketArea, setMarketArea] = useState('');
     const [brandName, setBrandName] = useState('');
     const [moreDetails, setMoreDetails] = useState('');
@@ -75,7 +76,7 @@ function Form() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + process.env.API_URL
+                'Authorization': 'Bearer ' + process.env.REACT_APP_API_KEY
             },
             body: JSON.stringify({
                 model: "text-davinci-003",
