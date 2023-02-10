@@ -65,7 +65,7 @@ function Form() {
             doc.text(line, 10, y);
             y += lineHeight;
         }
-        doc.save('file.pdf');
+        doc.save('marketanalyse.pdf');
     };
 
     const handleSubmit = async (event) => {
@@ -75,7 +75,7 @@ function Form() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
+                'Authorization': 'Bearer ' + process.env.API_URL
             },
             body: JSON.stringify({
                 model: "text-davinci-003",
