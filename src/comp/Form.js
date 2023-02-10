@@ -107,7 +107,7 @@ function Form() {
     return (
         <>
             <Grid container display='flex' justifyContent='center' direction='column' justifyItems='center' alignItems='center' alignContent="center" padding='2rem' >
-                <Paper elevation={8} sx={{ padding: "3rem", width: "80%", display: "flex", justifyContent: "left", backgroundColor: "#FEFEFE" }}>
+                <Paper className='papier' elevation={8} sx={{ padding: "3rem", width: "80%", display: "flex", justifyContent: "left", backgroundColor: "#FEFEFE" }}>
                     <form onSubmit={handleSubmit}>
                         <Grid p={1}>
                             <TextField

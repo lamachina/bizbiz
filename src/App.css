@@ -56,3 +56,26 @@ html {
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (max-width: 888px) {
+  .App {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .App-header {
+    font-size: 20px;
+  }
+
+  .papier {
+    flex-direction: column-reverse;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  .App-logo {
+    height: 20vmin;
+  }
+}
