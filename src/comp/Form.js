@@ -17,7 +17,7 @@ function Form() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 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'
+                    'Authorization': 'Bearer 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'
                 },
                 body: JSON.stringify({
                     model: "text-davinci-003",
