@@ -57,9 +57,34 @@ html {
   }
 }
 
+.formi {
+  background-color: #f2f2f2;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gridi {
+  border-radius: 3rem;
+  padding: 0.5rem;
+  width: 50%;
+}
+
+.grido {}
+
+.papier {
+  background-size: cover;
+  background-position: top;
+  width: 80%;
+  padding: 3rem;
+  background-image: url("/public/bg_robot.png");
+  background-blend-mode: hue;
+}
+
+
 @media only screen and (max-width: 888px) {
   .App {
-    height: auto;
+    height: 100%;
     flex-direction: column;
   }
 
@@ -69,10 +94,27 @@ html {
 
   .papier {
     flex-direction: column-reverse;
+    background-image: none;
+    padding: 0;
+    width: 97%;
   }
 
   form {
     padding: 1rem;
+  }
+
+  .formi {
+    margin-bottom: 0;
+  }
+
+  .gridi {
+    background-color: #fff;
+    width: 100%;
+    padding-bottom: 2rem;
+  }
+
+  .grido {
+    width: 97%;
   }
 
   .App-logo {

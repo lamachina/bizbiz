@@ -74,6 +74,7 @@ function Form() {
         event.preventDefault();
         setIsLoading(true);
 
+
         const response = await fetch('https://api.openai.com/v1/completions', {
             method: 'POST',
             headers: {
@@ -106,11 +107,12 @@ function Form() {
 
     return (
         <>
-            <Grid container display='flex' justifyContent='center' direction='column' justifyItems='center' alignItems='center' alignContent="center" padding='2rem' >
-                <Paper className='papier' elevation={8} sx={{ padding: "3rem", width: "80%", display: "flex", justifyContent: "left", backgroundColor: "#FEFEFE" }}>
-                    <form onSubmit={handleSubmit}>
+            <Grid display='flex' justifyContent='center' direction='column' justifyItems='center' alignItems='center' alignContent="center"  >
+                <Paper className="papier" elevation={8} sx={{ display: "flex", justifyContent: "space-around" }}>
+                    <form className='formi' onSubmit={handleSubmit}>
                         <Grid p={1}>
                             <TextField
+                                sx={{ backgroundColor: "#fff" }}
                                 label="Market Area"
                                 id="market-area"
                                 value={marketArea}
@@ -120,6 +122,7 @@ function Form() {
                         </Grid>
                         <Grid p={1}>
                             <TextField
+                                sx={{ backgroundColor: "#fff" }}
                                 label="Brand Name"
                                 id="brand-name"
                                 value={brandName}
@@ -129,6 +132,7 @@ function Form() {
                         </Grid>
                         <Grid p={1}>
                             <TextField
+                                sx={{ backgroundColor: "#fff" }}
                                 label="More Details"
                                 id="more-details"
                                 value={moreDetails}
@@ -141,13 +145,20 @@ function Form() {
                                 Submit
                             </Button>}
                     </form>
-                    <Grid container direction="column" display="flex" justifyContent="left" alignItems="center">
+                    <Grid flexDirection="column" display="flex" justifyContent="left" alignItems="center" className={isLoading ? 'grido' : 'gridi'}>
                         <Typography color="primary" variant='h4'>Market Model Machine</Typography>
                         <Typography pb="1rem" color="secondary" variant='overline'>your source for creative and quick market analysis</Typography>
-                        <Typography textAlign="start" width="70%" variant='body'>To get started, simply target your <span style={{ color: "#1976d2", }}> market area.</span> <br /><br />
-                            Then, enter the <span style={{ color: "#1976d2" }}>brand name</span> you'd like to focus on.<br /><br />
-                            If you have any <span style={{ color: "#1976d2" }}>additional details</span> or information that could help us analyze the target market, feel free to enter that as well.<br /><br />
-                            Once you've <span style={{ color: "green" }}>submitted</span> your information, our app will automatically generate a report. When downloading is proceeding, do not quit the page.</Typography>
+                        {!isLoading ?
+                            <Typography textAlign="start" width="70%" variant='body'>
+                                To get started, simply target your <span style={{ color: "#1976d2", }}> market area.</span> <br /><br />
+                                Then, enter the <span style={{ color: "#1976d2" }}>brand name</span> you'd like to focus on.<br /><br />
+                                If you have any <span style={{ color: "#1976d2" }}>additional details</span> or information that could help us analyze the target market, feel free to enter that as well.<br /><br />
+                                Once you've <span style={{ color: "green" }}>submitted</span> your information, our app will automatically generate a report.
+                            </Typography>
+                            :
+                            <Typography variant='body2'> Downloading... do not quit the page.</Typography>
+                        }
+
                         {/* <Button onClick={handleDownload}>Download PDF</Button> */}
                     </Grid>
                 </Paper>
