@@ -3,7 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e5e7e6
+  flex-direction: column;
+  height: 100%;
+  background-image: url("/public/bg_robot.png");
+  background-size: cover;
+}
+
+.dark {
+  filter: invert()
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
@@ -72,18 +79,20 @@ html {
 .grido {}
 
 .papier {
-  background-size: cover;
-  background-position: top;
+
   width: 80%;
   padding: 3rem;
-  background-image: url("/public/bg_robot.png");
-  background-blend-mode: hue;
+
 }
 
 
 @media only screen and (max-width: 888px) {
   .App {
     flex-direction: column;
+  }
+
+  #root {
+    height: auto;
   }
 
   .App-header {
