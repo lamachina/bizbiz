@@ -1,6 +1,7 @@
 import { Button, CircularProgress, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import jsPDF from 'jspdf';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Form() {
 
@@ -11,6 +12,9 @@ function Form() {
     const [rep1, setrep1] = useState("")
     //const [rep2, setrep2] = useState("")
     const [rep2f, setrep2f] = useState("")
+
+
+
     const businessModel = `You are a trend analysis agency. You will answer with a detailed structure (title, subtitle, paragraph) for each point. 1. Size of the Target Market. A. Overview. B. ${brandName} Market Size. 2. Structure of the Target Market. A. Market Segmentation. B. Customer Profile. 3. Characteristics of the Target Market. A. Market Trends. B. Consumer Needs and Behaviors. 4. Potential Risks. A. Compétition. B. Economic Conditions.  Your goal is to do market analysis with the following instructions:  identify the size, structure and characteristics of the target market.Highlight market trends and opportunities as well as consumer needs and behaviors.find the potential risks associated with entering the market.Step-by-step analysis for market and environment: ${marketArea}Specifically, the analysis must put the brand ${brandName} at the center of the analysis.Use all of the following information along with your own research skills to develop an accurate and creative analysis model.Information: ${moreDetails}. Use two dots instead of one everytime you need to go to the line after a sentence.`
     /* 
         async function handleResponse(rep1) {
@@ -48,6 +52,19 @@ function Form() {
     
             setrep2f(parsedText);
         } */
+    const [seconds, setSeconds] = useState(45);
+    useEffect(() => {
+        let timer = null;
+        if (isLoading) {
+            timer = setInterval(() => {
+                setSeconds((seconds) => seconds - 1);
+            }, 1000);
+        }
+        return () => {
+            clearInterval(timer);
+        };
+    });
+
     const handleDownload = (inputText) => {
         const doc = new jsPDF({
             orientation: 'portrait',
@@ -73,6 +90,7 @@ function Form() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsLoading(true);
+
 
 
         const response = await fetch('https://api.openai.com/v1/completions', {
@@ -104,6 +122,8 @@ function Form() {
         //handleResponse(generatedText);
         handleDownload(generatedText)
     }
+
+
 
     return (
         <>
@@ -140,7 +160,20 @@ function Form() {
                             />
                         </Grid>
 
-                        {isLoading ? <CircularProgress /> :
+                        {isLoading ? <Box> <CircularProgress />
+                            <Box
+                                sx={{
+                                    top: "-2rem",
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}>
+                                <Typography variant="caption" color="secondary">
+                                    {seconds}
+                                </Typography>
+                            </Box>
+                        </Box> :
                             <Button type="submit" variant="contained" color="primary">
                                 Submit
                             </Button>}
