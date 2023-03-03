@@ -1,10 +1,32 @@
-import { Button, Grid, Slider, Typography } from '@mui/material'
+import { Box, Button, Grid, Rating, Slider, Typography } from '@mui/material'
 import { Stack } from '@mui/system';
 import React, { useState } from 'react'
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
-function StepOne({ handleNext }) {
+const labels = {
+    0.5: 'Useless',
+    1: 'Useless+',
+    1.5: 'Poor',
+    2: 'Poor+',
+    2.5: 'Ok',
+    3: 'Ok+',
+    3.5: 'Good',
+    4: 'Good+',
+    4.5: 'Excellent',
+    5: 'Excellent+',
+};
+function getLabelText(value) {
+    return `${value} RocketLaunch${value !== 1 ? 's' : ''}, ${labels[value]}`;
+}
 
+function StepOne({ handleNext, updateObject, object }) {
+    const [hover, setHover] = React.useState(-1);
+    const [numi, setnumi] = React.useState(2);
 
+    const handleChange = (event, value) => {
+        updateObject('stepOne', value);
+        console.log(object);
+    };
 
     return (
 
@@ -33,7 +55,33 @@ function StepOne({ handleNext }) {
                 </li>
 
             </ul>
-
+            <Grid justifyContent={"center"} display="flex" direction={"row"} flexWrap="wrap" alignItems="center">
+                <Typography variant='overline' fontSize={"80%"} >What is your first opinion about the project ?</Typography>
+                <Box
+                    p={"0.5rem"}
+                    sx={{
+                        width: 200,
+                        display: 'flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Rating
+                        name="hover-feedback"
+                        value={object}
+                        precision={0.5}
+                        getLabelText={getLabelText}
+                        onChange={handleChange}
+                        onChangeActive={(event, newHover) => {
+                            setHover(newHover);
+                        }}
+                        icon={<RocketLaunchIcon style={{ opacity: 1 }} fontSize="inherit" />}
+                        emptyIcon={<RocketLaunchIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                    />
+                    {numi !== null && (
+                        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : numi]}</Box>
+                    )}
+                </Box>
+            </Grid>
             <Grid p={"1rem"}>
                 <Button variant='outlined' onClick={handleNext}>
                     Next

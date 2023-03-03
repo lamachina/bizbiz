@@ -23,9 +23,8 @@ function App() {
     ModusB ?
       setModusB(false) :
       setModusB(true)
-
-
   }
+
   function generateSimplePDF() {
     const doc = new jsPDF();
     doc.text("Hello World !!!", 10, 10);
@@ -45,7 +44,7 @@ function App() {
 
 
 
-        <Button sx={{ position: "relative", left: "33%" }} variant='contained' color='secondary' onClick={handleClick}>
+        <Button sx={{ position: "relative", left: "40%" }} variant='contained' color='secondary' onClick={handleClick}>
           {ModusB ? "dark" : "light"}
         </Button>
 

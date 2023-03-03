@@ -1,20 +1,25 @@
 import { Button, Grid, Slider, Typography } from '@mui/material'
 import { Stack } from '@mui/system';
 import React, { useState } from 'react'
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 
-function StepTwo({ handleNext, handleBack, value, setValue }) {
+function StepTwo({ handleBack, handleNext, updateObject, object }) {
 
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
+    const handleChange = (event, value) => {
+        updateObject('stepTwo', value);
+        console.log(object);
     };
+
+
+
     return (
 
         <>
 
             <Typography variant='h5'>Sentiment</Typography>
 
-            <Typography variant='subtitle2' textAlign={"left"}>Target the audience and review the popularity with the below tools :</Typography>
+            <Typography variant='subtitle2' textAlign={"left"}>Target the audience and review the popularity with :</Typography>
 
 
 
@@ -31,16 +36,21 @@ function StepTwo({ handleNext, handleBack, value, setValue }) {
 
 
             </ul>
-            <Grid justifyContent={"center"} display="flex">
-                <Stack width="70%" alignItems={"center"} alignContent="center">
+            <Grid justifyContent={"center"} display="flex" >
+                <Stack width="63%" alignItems={"center"} alignContent="center">
                     <Typography variant='subtitle2' textAlign={"left"}>Rate the overall sentiment of the audience:</Typography>
-                    <Slider
-                        onChange={handleChange}
-                        min={0}
-                        max={100}
-                        step={1}
-                        valueLabelDisplay="auto"
-                    />
+                    <Stack width={"100%"} direction="row" gap={"1rem"} alignItems="center">
+                        <ThumbDownAltIcon color='error' />
+                        <Slider
+                            value={object}
+                            onChange={handleChange}
+                            min={0}
+                            max={100}
+                            step={1}
+                            valueLabelDisplay="auto"
+                        />
+                        <ThumbUpAltIcon color='success' />
+                    </Stack>
                 </Stack>
             </Grid>
             <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"} >

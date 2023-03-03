@@ -7,32 +7,40 @@ import StepThree from './Stepper/StepThree';
 
 function StepperWithQuestion() {
     const [activeStep, setActiveStep] = useState(0);
-    const [values, setValues] = useState({});
+    const [object, setobject] = useState({});
+
+    const updateObject = (object, value) => {
+        setobject(prevState => ({
+            ...prevState,
+            [object]: value
+        }));
+    };
 
     const handleNext = (value) => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setValues((prevValues) => ({ ...prevValues, [activeStep]: value }));
+        updateObject()
+        console.log(object);
     };
 
     const handleBack = (value) => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
-        setValues((prevValues) => ({ ...prevValues, [activeStep]: value }));
+        updateObject()
     };
 
 
     const stepOne = () => {
         return (
-            <StepOne handleNext={handleNext} value={values[0]} setValue={(value) => setValues({ ...values, [activeStep]: value })} />
+            <StepOne handleNext={handleNext} updateObject={updateObject} object={object.stepOne} />
         );
     };
     const stepTwo = () => {
         return (
-            <StepTwo handleNext={handleNext} handleBack={handleBack} value={values[1]} setValue={(value) => setValues({ ...values, [activeStep]: value })} />
+            <StepTwo handleNext={handleNext} handleBack={handleBack} updateObject={updateObject} object={object.stepTwo} />
         );
     };
     const stepThree = () => {
         return (
-            <StepThree handleNext={handleNext} handleBack={handleBack} value={values[2]} setValue={(value) => setValues({ ...values, [activeStep]: value })} />
+            <StepThree handleNext={handleNext} handleBack={handleBack} updateObject={updateObject} object={object.stepThree} />
         );
     };
 
@@ -43,10 +51,10 @@ function StepperWithQuestion() {
     ];
 
     return (
-        <Grid display='flex' flexDirection='column' width={"90%"} height={"80%"} alignItems="center" justifyContent={"space-evenly"} >
-            <Stepper sx={{ background: "#fff", padding: "1rem", width: "100%", borderRadius: "1rem" }} activeStep={activeStep} orientation="vertical" className="stepPi">
+        <Grid display='flex' flexDirection='column' width={"90%"} height={"80%"} alignItems="center" justifyContent={"space-evenly"}  >
+            <Stepper sx={{ background: "#fff", padding: "1rem", width: "100%", borderRadius: "1rem", flexDirection: "column-reverse" }} activeStep={activeStep} orientation="vertical" className="stepPi">
                 {steps.map((step, index) => (
-                    <Step key={step.label}>
+                    <Step key={step.label} >
                         <StepLabel>{step.label}</StepLabel>
                         <StepContent className="stepPi">
                             {step.content}
@@ -59,7 +67,7 @@ function StepperWithQuestion() {
                 activeStep === steps.length && (
 
                     <Card sx={{ p: '1rem' }}>
-                        <Button onClick={() => { setActiveStep(0); setValues({}) }}>Restart</Button>
+                        <Button onClick={() => { setActiveStep(0); setobject({}) }}>Restart</Button>
 
                     </Card>
                 )

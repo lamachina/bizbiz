@@ -1,7 +1,16 @@
-import { Button, Grid, Slider, Typography } from '@mui/material'
+import { Button, Checkbox, Grid, Slider, Typography } from '@mui/material'
 import { Stack } from '@mui/system';
 import React, { useState } from 'react'
-function StepThree({ handleNext, handleBack }) {
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+
+
+
+function StepThree({ handleNext, updateObject, object, handleBack }) {
+
+    const handleChange = (event, value) => {
+        updateObject('stepThree', value);
+        console.log(object);
+    };
 
     return (
 
@@ -29,6 +38,20 @@ function StepThree({ handleNext, handleBack }) {
 
 
             </ul>
+            <Typography variant='subtitle2' textAlign={"left"}>Metrics</Typography>
+
+            <Stack flexDirection={"row"} alignItems="center">
+                <Typography variant='overline' >Market capitalization (MC)</Typography>
+                <Checkbox icon={<RocketLaunchIcon />} checkedIcon={<RocketLaunchIcon color='success' />} />
+            </Stack>
+            <Stack flexDirection={"row"} alignItems="center">
+                <Typography variant='overline' >Total value locked (TVL)</Typography>
+                <Checkbox icon={<RocketLaunchIcon />} checkedIcon={<RocketLaunchIcon color='success' />} />
+            </Stack>
+            <Stack flexDirection={"row"} alignItems="center">
+                <Typography variant='overline' >Fully diluted valuation (FDV)</Typography>
+                <Checkbox icon={<RocketLaunchIcon />} checkedIcon={<RocketLaunchIcon color='success' />} />
+            </Stack>
 
             <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"}>
                 <Button variant='outlined' onClick={handleBack}>
