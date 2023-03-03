@@ -1,11 +1,9 @@
-import { Button, Grid, ThemeProvider } from '@mui/material';
+import { Button, ThemeProvider } from '@mui/material';
 import './App.css';
 import Form from './comp/Form';
 import { useState } from 'react';
 import { createTheme } from '@mui/material';
-import ReactPDF, { PDFViewer, renderToString } from '@react-pdf/renderer';
 import jsPDF from 'jspdf';
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import StepperWithQuestion from "./comp/Quixote"
 const theme = createTheme({
   palette: {
