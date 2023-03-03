@@ -1,8 +1,13 @@
-import { Button, Grid, Typography } from '@mui/material'
-import React from 'react'
+import { Button, Grid, Slider, Typography } from '@mui/material'
+import { Stack } from '@mui/system';
+import React, { useState } from 'react'
 
-function StepTwo({ handleNext }) {
+function StepTwo({ handleNext, handleBack, value, setValue }) {
 
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
     return (
 
         <>
@@ -26,8 +31,22 @@ function StepTwo({ handleNext }) {
 
 
             </ul>
-
-            <Grid p={"1rem"}>
+            <Grid justifyContent={"center"} display="flex">
+                <Stack width="70%" alignItems={"center"} alignContent="center">
+                    <Typography variant='subtitle2' textAlign={"left"}>Rate the overall sentiment of the audience:</Typography>
+                    <Slider
+                        onChange={handleChange}
+                        min={0}
+                        max={100}
+                        step={1}
+                        valueLabelDisplay="auto"
+                    />
+                </Stack>
+            </Grid>
+            <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"} >
+                <Button variant='outlined' onClick={handleBack}>
+                    Back
+                </Button>
                 <Button variant='outlined' onClick={handleNext}>
                     Next
                 </Button>

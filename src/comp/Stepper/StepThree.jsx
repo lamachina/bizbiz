@@ -1,7 +1,7 @@
-import { Button, Grid, Icon, Typography } from '@mui/material'
-import React from 'react'
-
-function StepThree({ handleNext }) {
+import { Button, Grid, Slider, Typography } from '@mui/material'
+import { Stack } from '@mui/system';
+import React, { useState } from 'react'
+function StepThree({ handleNext, handleBack }) {
 
     return (
 
@@ -30,12 +30,14 @@ function StepThree({ handleNext }) {
 
             </ul>
 
-            <Grid p={"1rem"}>
+            <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"}>
+                <Button variant='outlined' onClick={handleBack}>
+                    Back
+                </Button>
                 <Button variant='outlined' onClick={handleNext}>
                     Next
                 </Button>
             </Grid>
-
 
         </>
     )

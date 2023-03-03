@@ -7,28 +7,32 @@ import StepThree from './Stepper/StepThree';
 
 function StepperWithQuestion() {
     const [activeStep, setActiveStep] = useState(0);
+    const [values, setValues] = useState({});
 
-    const handleNext = () => {
+    const handleNext = (value) => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setValues((prevValues) => ({ ...prevValues, [activeStep]: value }));
     };
 
-    const handleBack = () => {
+    const handleBack = (value) => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
+        setValues((prevValues) => ({ ...prevValues, [activeStep]: value }));
     };
+
 
     const stepOne = () => {
         return (
-            <StepOne handleNext={handleNext} />
+            <StepOne handleNext={handleNext} value={values[0]} setValue={(value) => setValues({ ...values, [activeStep]: value })} />
         );
     };
     const stepTwo = () => {
         return (
-            <StepTwo handleNext={handleNext} handleBack={handleBack} />
+            <StepTwo handleNext={handleNext} handleBack={handleBack} value={values[1]} setValue={(value) => setValues({ ...values, [activeStep]: value })} />
         );
     };
     const stepThree = () => {
         return (
-            <StepThree handleNext={handleNext} handleBack={handleBack} />
+            <StepThree handleNext={handleNext} handleBack={handleBack} value={values[2]} setValue={(value) => setValues({ ...values, [activeStep]: value })} />
         );
     };
 
@@ -55,7 +59,7 @@ function StepperWithQuestion() {
                 activeStep === steps.length && (
 
                     <Card sx={{ p: '1rem' }}>
-                        <Button onClick={() => setActiveStep(0)}>Restart</Button>
+                        <Button onClick={() => { setActiveStep(0); setValues({}) }}>Restart</Button>
 
                     </Card>
                 )

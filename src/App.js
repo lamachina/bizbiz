@@ -45,8 +45,8 @@ function App() {
 
 
 
-        <Button variant='contained' color='secondary' onClick={handleClick}>
-          {ModusB ? "pass in dark mode" : "pass in light mode"}
+        <Button sx={{ position: "relative", left: "33%" }} variant='contained' color='secondary' onClick={handleClick}>
+          {ModusB ? "dark" : "light"}
         </Button>
 
         {/*    <button onClick={generateSimplePDF}>print</button> */}

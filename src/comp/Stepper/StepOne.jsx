@@ -1,7 +1,10 @@
-import { Button, Grid, Typography } from '@mui/material'
-import React from 'react'
+import { Button, Grid, Slider, Typography } from '@mui/material'
+import { Stack } from '@mui/system';
+import React, { useState } from 'react'
 
 function StepOne({ handleNext }) {
+
+
 
     return (
 
