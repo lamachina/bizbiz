@@ -85,6 +85,10 @@ html {
 
 }
 
+a {
+  color: #305a63;
+  text-decoration: none;
+}
 
 @media only screen and (max-width: 888px) {
   .App {

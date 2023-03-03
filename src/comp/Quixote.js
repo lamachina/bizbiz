@@ -34,13 +34,13 @@ function StepperWithQuestion() {
 
     const steps = [
         { label: 'Fundamental', content: stepOne() },
-        { label: 'On chain', content: stepTwo() },
-        { label: 'Sentiment', content: stepThree() },
+        { label: 'Sentiment', content: stepTwo() },
+        { label: 'Token', content: stepThree() },
     ];
 
     return (
-        <Grid display='flex' flexDirection='column' >
-            <Stepper sx={{ background: "#fff", padding: "1rem", width: "20rem" }} activeStep={activeStep} orientation="vertical" className="stepPi">
+        <Grid display='flex' flexDirection='column' width={"90%"} height={"80%"} alignItems="center" justifyContent={"space-evenly"} >
+            <Stepper sx={{ background: "#fff", padding: "1rem", width: "100%", borderRadius: "1rem" }} activeStep={activeStep} orientation="vertical" className="stepPi">
                 {steps.map((step, index) => (
                     <Step key={step.label}>
                         <StepLabel>{step.label}</StepLabel>
@@ -50,15 +50,18 @@ function StepperWithQuestion() {
                     </Step>
                 ))}
             </Stepper>
-            <Card sx={{ padding: '1rem' }}>
-                {activeStep === steps.length && (
-                    <div>
-                        <h2>Finished!</h2>
+
+            {
+                activeStep === steps.length && (
+
+                    <Card sx={{ p: '1rem' }}>
                         <Button onClick={() => setActiveStep(0)}>Restart</Button>
-                    </div>
-                )}
-            </Card>
+
+                    </Card>
+                )
+            }
         </Grid>
+
     );
 }
 
