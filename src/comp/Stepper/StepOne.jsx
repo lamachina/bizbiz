@@ -55,7 +55,7 @@ function StepOne({ handleNext, updateObject, object }) {
                 </li>
 
             </ul>
-            <Grid justifyContent={"center"} display="flex" direction={"row"} flexWrap="wrap" alignItems="center">
+            <Grid justifyContent={"center"} display="flex" flexDirection={"row"} flexWrap="wrap" alignItems="center">
                 <Typography variant='overline' fontSize={"80%"} >What is your first opinion about the project ?</Typography>
                 <Box
                     p={"0.5rem"}
@@ -74,8 +74,8 @@ function StepOne({ handleNext, updateObject, object }) {
                         onChangeActive={(event, newHover) => {
                             setHover(newHover);
                         }}
-                        icon={<RocketLaunchIcon style={{ opacity: 1 }} fontSize="inherit" />}
-                        emptyIcon={<RocketLaunchIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                        icon={<RocketLaunchIcon style={{ opacity: 1 }} fontSize="large" />}
+                        emptyIcon={<RocketLaunchIcon style={{ opacity: 0.8 }} fontSize="large" />}
                     />
                     {numi !== null && (
                         <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : numi]}</Box>

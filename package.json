@@ -14,9 +14,15 @@
     "dotenv": "^16.0.3",
     "font-awesome": "^4.7.0",
     "jspdf": "^2.5.1",
+    "jspdf-invoice-template": "^1.4.3",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
+    "svg2pdf": "^1.1.1",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

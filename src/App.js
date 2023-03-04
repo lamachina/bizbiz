@@ -1,10 +1,13 @@
-import { Button, ThemeProvider } from '@mui/material';
+import { AppBar, Button, Grid, Switch, ThemeProvider } from '@mui/material';
 import './App.css';
 import Form from './comp/Form';
 import { useState } from 'react';
 import { createTheme } from '@mui/material';
-import jsPDF from 'jspdf';
+import jsPDFInvoiceTemplate, { OutputType, jsPDF } from "jspdf-invoice-template";
 import StepperWithQuestion from "./comp/Quixote"
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import MainToPdf from './comp/MainToPdf';
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -16,7 +19,11 @@ const theme = createTheme({
   }
 });
 
+
+
 function App() {
+
+
   const [ModusB, setModusB] = useState(true)
 
   const handleClick = () => {
@@ -25,34 +32,34 @@ function App() {
       setModusB(true)
   }
 
-  function generateSimplePDF() {
-    const doc = new jsPDF();
-    doc.text("Hello World !!!", 10, 10);
 
-    doc.setFont("courier")
-
-    doc.setFontSize(50)
-
-    doc.text("There is more text", 10, 50);
-
-    doc.save("Document.pdf");
-  }
   return (
     <div className={ModusB ? "App" : "App dark"}>
       <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <AppBar position='sticky' color='secondary' sx={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center", p: "1rem" }}>
+            <Link to="/" >Home</Link>
+            <Link to="/about" >About</Link>
+            <Link to="/stepper">Stepper</Link>
+            <Button variant='contained' color='secondary' onClick={handleClick}>
+              {ModusB ? "light" : "dark"}
+            </Button>
 
+          </AppBar>
 
-
-
-        <Button sx={{ position: "relative", left: "40%" }} variant='contained' color='secondary' onClick={handleClick}>
-          {ModusB ? "dark" : "light"}
-        </Button>
-
-        {/*    <button onClick={generateSimplePDF}>print</button> */}
-        {/* <Form /> */}
-        <StepperWithQuestion />
-
-
+          <Grid display={"flex"} justifyContent={"center"} >
+            <Routes>
+              <Route exact path="/" element={
+                <MainToPdf />} />
+              <Route path="/about" element={
+                <Form />
+              } />
+              <Route path="/stepper" element={
+                <StepperWithQuestion />
+              } />
+            </Routes>
+          </Grid>
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   );
