@@ -20,6 +20,7 @@ function StepperWithQuestion() {
 
     const handleNext = (value) => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        updateObject()
         console.log(object);
     };
 

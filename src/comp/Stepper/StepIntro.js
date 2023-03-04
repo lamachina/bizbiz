@@ -19,7 +19,9 @@ function StepIntro({ handleNext, updateObject, object }) {
     };
 
 
-
+    const validation = (inputValues) => {
+        return (inputValues.coinName === '' || inputValues.coinShortName === '' || inputValues.coinShortName === '')
+    }
 
 
     return (
@@ -40,9 +42,16 @@ function StepIntro({ handleNext, updateObject, object }) {
                         onChange={handleChange}
                         name="coinCategory"
                     >
-                        <MenuItem value={"layer1"}>Ten</MenuItem>
-                        <MenuItem value={"layer2"}>Twenty</MenuItem>
-                        <MenuItem value={"layer3"}>Thirty</MenuItem>
+                        <MenuItem value={"LAYER 1"}>LAYER 1</MenuItem>
+                        <MenuItem value={"LAYER 2"}>LAYER 2</MenuItem>
+                        <MenuItem value={"LAYER 0"}>LAYER 0</MenuItem>
+                        <MenuItem value={"LSD"}>LSD</MenuItem>
+                        <MenuItem value={"DERIVATIVES/OPTIONS"}>DERIVATIVES / OPTIONS</MenuItem>
+                        <MenuItem value={"DEX"}>DEX</MenuItem>
+                        <MenuItem value={"GAMING"}>GAMING</MenuItem>
+                        <MenuItem value={"AI"}>AI</MenuItem>
+                        <MenuItem value={"NFT"}>NFT</MenuItem>
+                        <MenuItem value={"PRIVACY"}>PRIVACY</MenuItem>
                     </Select>
                 </FormControl>
                 <Stack pt={"1rem"} gap="1rem">
@@ -64,13 +73,14 @@ function StepIntro({ handleNext, updateObject, object }) {
 
 
             </Grid>
+            {!validation(inputValues) &&
+                <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"} >
 
-            <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"} >
-
-                <Button variant='outlined' onClick={handleNext}>
-                    Next
-                </Button>
-            </Grid>
+                    <Button variant='outlined' onClick={handleNext}  >
+                        Next
+                    </Button>
+                </Grid>
+            }
 
 
         </>

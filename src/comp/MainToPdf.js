@@ -60,8 +60,7 @@ function MainToPdf(collectedData) {
             body: [
                 [
                     {
-                        content: result.collectedData.stepIntro.coinCategory
-                            + '\n' + date,
+                        content: result.collectedData.stepIntro.coinCategory,
                         styles: {
                             halign: 'left',
                             fontSize: 14,
@@ -76,38 +75,40 @@ function MainToPdf(collectedData) {
             body: [
                 [
                     {
-                        content: 'Billed to:'
-                            + '\nJohn Doe'
-                            + '\nBilling Address line 1'
-                            + '\nBilling Address line 2'
-                            + '\nZip code - City'
-                            + '\nCountry',
+                        content: 'FUNDAMENTAL ANALYSIS :'
+                            + '\n'
+                            + '\nthe project has a detection note of ' + result.collectedData.stepOne
+                            + '\n'
+                            + '\n'
+                            + '\n',
                         styles: {
                             halign: 'left'
                         }
                     },
                     {
-                        content: 'Shipping address:'
-                            + '\nJohn Doe'
-                            + '\nShipping Address line 1'
-                            + '\nShipping Address line 2'
-                            + '\nZip code - City'
-                            + '\nCountry',
+                        content: 'SENTIMENT RESEARCH :'
+                            + '\n'
+                            + '\nTweet in last 6 months are growing'
+                            + '\nBullish sentiment score is ' + result.collectedData.stepTwo
+                            + '\n'
+                            + '\n',
                         styles: {
                             halign: 'left'
                         }
                     },
+
                     {
-                        content: 'From:'
-                            + '\nCompany name'
-                            + '\nShipping Address line 1'
-                            + '\nShipping Address line 2'
-                            + '\nZip code - City'
-                            + '\nCountry',
+                        content: 'TOKENOMIC :'
+                            + '\n'
+                            + '\nMarket Cap ' + result.collectedData.stepThree.coinMC
+                            + '\n'
+                            + '\n'
+                            + '\n',
                         styles: {
                             halign: 'right'
                         }
                     }
+
                 ],
             ],
             theme: 'plain'
@@ -117,7 +118,7 @@ function MainToPdf(collectedData) {
             body: [
                 [
                     {
-                        content: 'Amount due:',
+                        content: 'Current price in USD',
                         styles: {
                             halign: 'right',
                             fontSize: 14
@@ -126,17 +127,17 @@ function MainToPdf(collectedData) {
                 ],
                 [
                     {
-                        content: '$4000',
+                        content: '$0.0005',
                         styles: {
                             halign: 'right',
                             fontSize: 20,
-                            textColor: '#3366ff'
+                            textColor: '#a0b4c7'
                         }
                     }
                 ],
                 [
                     {
-                        content: 'Due date: 2022-02-01',
+                        content: '0.0000002 in $BTC',
                         styles: {
                             halign: 'right'
                         }
@@ -150,7 +151,7 @@ function MainToPdf(collectedData) {
             body: [
                 [
                     {
-                        content: 'Products & Services',
+                        content: 'SWOT ANALYSIS ',
                         styles: {
                             halign: 'left',
                             fontSize: 14
@@ -162,12 +163,10 @@ function MainToPdf(collectedData) {
         });
 
         autoTable(doc, {
-            head: [['Items', 'Category', 'Quantity', 'Price', 'Tax', 'Amount']],
+            head: [['Strength', 'Weakness', 'Opportunities', 'Threats']],
             body: [
-                ['Product or service name', 'Category', '2', '$450', '$50', '$1000'],
-                ['Product or service name', 'Category', '2', '$450', '$50', '$1000'],
-                ['Product or service name', 'Category', '2', '$450', '$50', '$1000'],
-                ['Product or service name', 'Category', '2', '$450', '$50', '$1000']
+                ['Scalibility and speed', 'Durabilty', 'Soon is halving', 'CZ and CEX'],
+
             ],
             theme: 'striped',
             headStyles: {
@@ -179,46 +178,19 @@ function MainToPdf(collectedData) {
             body: [
                 [
                     {
-                        content: 'Subtotal:',
+                        content: 'A good price to buy :',
                         styles: {
                             halign: 'right'
                         }
                     },
                     {
-                        content: '$3600',
+                        content: '$0.000002',
                         styles: {
                             halign: 'right'
                         }
                     },
                 ],
-                [
-                    {
-                        content: 'Total tax:',
-                        styles: {
-                            halign: 'right'
-                        }
-                    },
-                    {
-                        content: '$400',
-                        styles: {
-                            halign: 'right'
-                        }
-                    },
-                ],
-                [
-                    {
-                        content: 'Total amount:',
-                        styles: {
-                            halign: 'right'
-                        }
-                    },
-                    {
-                        content: '$4000',
-                        styles: {
-                            halign: 'right'
-                        }
-                    },
-                ],
+
             ],
             theme: 'plain'
         });

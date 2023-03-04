@@ -1,12 +1,11 @@
-import { AppBar, Button, Grid, Switch, ThemeProvider } from '@mui/material';
+import { AppBar, Button, Grid, ThemeProvider } from '@mui/material';
 import './App.css';
 import Form from './comp/Form';
 import { useState } from 'react';
 import { createTheme } from '@mui/material';
-import jsPDFInvoiceTemplate, { OutputType, jsPDF } from "jspdf-invoice-template";
 import StepperWithQuestion from "./comp/Quixote"
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import MainToPdf from './comp/MainToPdf';
+import SDFHome from './comp/SDFHome';
 
 const theme = createTheme({
   palette: {
@@ -50,7 +49,7 @@ function App() {
           <Grid display={"flex"} justifyContent={"center"} width="100%" >
             <Routes>
               <Route exact path="/" element={
-                <MainToPdf />} />
+                <SDFHome />} />
               <Route path="/about" element={
                 <Form />
               } />

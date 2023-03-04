@@ -1,21 +1,22 @@
-import { Button, Checkbox, Grid, Slider, Typography } from '@mui/material'
+import { Check } from '@mui/icons-material';
+import { Button, Checkbox, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'
 import { Stack } from '@mui/system';
 import React, { useState } from 'react'
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 
 
 function StepThree({ handleNext, updateObject, object, handleBack }) {
-    const [checkboxValues, setCheckboxValues] = useState({
-        cOne: false,
-        cTwo: false,
-        cThree: false,
+    const [inputValues, setInputValues] = useState({
+        coinMC: "",
+        cWhale: false,
+        coinCategory: "",
         // add more checkboxes as needed
     });
+
     const handleChange = (event) => {
-        const { name, checked } = event.target;
-        setCheckboxValues({ ...checkboxValues, [name]: checked });
-        updateObject('stepThree', { ...checkboxValues, [name]: checked });
+        const { name, value } = event.target;
+        setInputValues({ ...inputValues, [name]: value });
+        updateObject('stepThree', { ...inputValues, [name]: value });
     };
 
     return (
@@ -45,27 +46,63 @@ function StepThree({ handleNext, updateObject, object, handleBack }) {
 
             </ul>
             <Typography variant='subtitle2' textAlign={"left"}>Metrics</Typography>
-            <Stack flexDirection={"row"} flexWrap="wrap" >
-                <ul> <li>
-                    <Stack flexDirection={"row"} alignItems="center">
-                        <Typography variant='overline' >Market capitalization (MC)</Typography>
-                        <Checkbox value={object} name="cOne" onChange={handleChange} icon={<RocketLaunchIcon />} checkedIcon={<RocketLaunchIcon color='success' />} />
-                    </Stack>
-                </li>
-                    <li>
+            <Grid justifyContent={"center"} display="flex" p={"1rem"} flexDirection="column">
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Total Market Cap</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="coinMC"
+                        label="Market Cap"
+                        onChange={handleChange}
+                        name="coinMC"
+                    >
+                        <MenuItem value={"< 300k$"}>under 300k$</MenuItem>
+                        <MenuItem value={"< 1M$"}>between 300k$ and 1M$</MenuItem>
+                        <MenuItem value={"< 10M$"}>between 1M$ and 10M$</MenuItem>
+                        <MenuItem value={"< 50M$"}>between 10M$ and 50M$</MenuItem>
+                        <MenuItem value={"< 500M$"}>between 50M$ and 500M$</MenuItem>
+
+                    </Select>
+                </FormControl>
+                <Stack pt={"1rem"} gap="1rem">
+                    <TextField
+                        id="coinName"
+                        label="Name"
+                        variant="outlined"
+                        onChange={handleChange}
+                        name="coinName"
+                    />
+                    <TextField
+                        id="coinShortName"
+                        label="Symbole"
+                        variant="outlined"
+                        onChange={handleChange}
+                        name="coinShortName"
+                    />
+                </Stack>
+                <Stack flexDirection={"row"} flexWrap="wrap" >
+                    <ul> <li>
                         <Stack flexDirection={"row"} alignItems="center">
-                            <Typography variant='overline' >Total value locked (TVL)</Typography>
-                            <Checkbox name="cTwo" onChange={handleChange} icon={<RocketLaunchIcon />} checkedIcon={<RocketLaunchIcon color='success' />} />
+                            <Typography variant='overline' >Whales invested </Typography>
+                            <Checkbox name="cWhale" onChange={handleChange} icon={<Check />} checkedIcon={<Check color='success' />} />
                         </Stack>
                     </li>
-                    <li>
-                        <Stack flexDirection={"row"} alignItems="center">
-                            <Typography variant='overline' >Fully diluted valuation (FDV)</Typography>
-                            <Checkbox name="cThree" onChange={handleChange} icon={<RocketLaunchIcon />} checkedIcon={<RocketLaunchIcon color='success' />} />
-                        </Stack>
-                    </li>
-                </ul>
-            </Stack>
+                        <li>
+                            <Stack flexDirection={"row"} alignItems="center">
+                                <Typography variant='overline' >Lot of concurrent</Typography>
+                                <Checkbox name="cTwo" onChange={handleChange} icon={<Check />} checkedIcon={<Check color='success' />} />
+                            </Stack>
+                        </li>
+                        <li>
+                            <Stack flexDirection={"row"} alignItems="center">
+                                <Typography variant='overline' >Fully diluted valuation (FDV)</Typography>
+                                <Checkbox name="cThree" onChange={handleChange} icon={<Check />} checkedIcon={<Check color='success' />} />
+                            </Stack>
+                        </li>
+                    </ul>
+                </Stack>
+            </Grid>
+
             <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"}>
                 <Button variant='outlined' onClick={handleBack}>
                     Back
