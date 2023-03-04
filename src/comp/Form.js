@@ -233,7 +233,7 @@ function Form() {
 
 
     return (
-        <Grid display='flex' justifyContent='center' direction='column' justifyItems='center' alignItems='center' alignContent="center"  >
+        <Grid display='flex' justifyContent='center' flexDirection='column' justifyItems='center' alignItems='center' alignContent="center"  >
             <Paper className="papier" elevation={8} sx={{ display: "flex", justifyContent: "space-around" }}>
                 <form className='formi' onSubmit={handleSubmit}>
                     <Grid p={1}>

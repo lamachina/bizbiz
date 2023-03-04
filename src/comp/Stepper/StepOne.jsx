@@ -19,7 +19,7 @@ function getLabelText(value) {
     return `${value} RocketLaunch${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
 
-function StepOne({ handleNext, updateObject, object }) {
+function StepOne({ handleNext, handleBack, updateObject, object }) {
     const [hover, setHover] = React.useState(-1);
     const [numi, setnumi] = React.useState(2);
 
@@ -82,7 +82,10 @@ function StepOne({ handleNext, updateObject, object }) {
                     )}
                 </Box>
             </Grid>
-            <Grid p={"1rem"}>
+            <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"}>
+                <Button variant='outlined' onClick={handleBack}>
+                    Back
+                </Button>
                 <Button variant='outlined' onClick={handleNext}>
                     Next
                 </Button>

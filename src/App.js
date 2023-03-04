@@ -37,7 +37,7 @@ function App() {
     <div className={ModusB ? "App" : "App dark"}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <AppBar position='sticky' color='secondary' sx={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center", p: "1rem" }}>
+          <AppBar position='sticky' color='primary' sx={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center", p: "1rem" }}>
             <Link to="/" >Home</Link>
             <Link to="/about" >About</Link>
             <Link to="/stepper">Stepper</Link>
@@ -47,7 +47,7 @@ function App() {
 
           </AppBar>
 
-          <Grid display={"flex"} justifyContent={"center"} >
+          <Grid display={"flex"} justifyContent={"center"} width="100%" >
             <Routes>
               <Route exact path="/" element={
                 <MainToPdf />} />
