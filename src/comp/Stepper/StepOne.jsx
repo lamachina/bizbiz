@@ -4,11 +4,9 @@ import React, { useState } from 'react'
 function StepOne({ handleNext, handleBack, updateObject, object }) {
     const [overviewLength, setOverviewLength] = useState(0);
 
-
     const handleChange = (event, value) => {
         updateObject('overviewDesc', event.target.value);
         setOverviewLength(event.target.value.length);
-        console.log(event.target.value);
     };
 
     return (
@@ -60,7 +58,7 @@ function StepOne({ handleNext, handleBack, updateObject, object }) {
                 <Button variant='outlined' onClick={handleBack}>
                     Back
                 </Button>
-                <Button variant='outlined' onClick={handleNext}>
+                <Button disabled={overviewLength === 0} variant='outlined' onClick={handleNext}>
                     Next
                 </Button>
             </Grid>

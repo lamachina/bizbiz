@@ -6,6 +6,7 @@ import { createTheme } from '@mui/material';
 import StepperWithQuestion from "./comp/Quixote"
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import SDFHome from './comp/SDFHome';
+import Tools from './comp/Tools';
 
 const theme = createTheme({
   palette: {
@@ -37,9 +38,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <AppBar position='sticky' color='primary' sx={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center", p: "1rem" }}>
-            <Link to="/" >Home</Link>
-            <Link to="/about" >About</Link>
-            <Link to="/stepper">Stepper</Link>
+            <Link style={{ color: '#f5f7f9' }} to="/" >Home</Link>
+            <Link style={{ color: '#45818e' }} to="/about" >Tools</Link>
+            <Link style={{ color: '#f5f7f9', textDecoration: 'underline' }} to="/stepper">Get a Report</Link>
             <Button variant='contained' color='secondary' onClick={handleClick}>
               {ModusB ? "light" : "dark"}
             </Button>
@@ -51,7 +52,7 @@ function App() {
               <Route exact path="/" element={
                 <SDFHome />} />
               <Route path="/about" element={
-                <Form />
+                <Tools />
               } />
               <Route path="/stepper" element={
                 <StepperWithQuestion />

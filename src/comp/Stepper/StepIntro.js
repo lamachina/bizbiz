@@ -2,7 +2,7 @@ import { Button, FormControl, Grid, InputLabel, MenuItem, Select, Slider, TextFi
 import { Stack } from '@mui/system';
 import React, { useState } from 'react'
 
-function StepIntro({ handleNext, updateObject, object }) {
+function StepIntro({ handleNext, updateObject }) {
 
 
     const [inputValues, setInputValues] = useState({
@@ -20,7 +20,7 @@ function StepIntro({ handleNext, updateObject, object }) {
 
 
     const validation = (inputValues) => {
-        return (inputValues.coinName === '' || inputValues.coinShortName === '' || inputValues.coinShortName === '')
+        return (inputValues.coinName === '' || inputValues.coinShortName === '' || inputValues.coinCategory === '')
     }
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Grid, Stepper, Step, StepLabel, StepContent } from '@mui/material';
+import { Button, Grid, Stepper, Step, StepLabel, StepContent, Stack } from '@mui/material';
 import "./../App.css"
 import StepOne from './Stepper/StepOne';
 import StepTwo from './Stepper/StepTwo';
@@ -59,15 +59,16 @@ function StepperWithQuestion() {
     const steps = [
         { label: 'Intro', content: stepIntro() },
         { label: 'Fundamental', content: stepOne() },
-        { label: 'Sentiment', content: stepTwo() },
         { label: 'Token', content: stepThree() },
         { label: 'Metrics', content: stepMetrics() },
+        { label: 'Sentiment', content: stepTwo() },
+
     ];
 
 
 
     return (
-        <Grid width={"90%"} display='flex' flexDirection='column' alignItems="center" justifyContent={"space-evenly"}  >
+        <Grid width={"90%"} display='flex' flexDirection='column' alignItems="center" justifyContent={"space-evenly"} gap="3rem" >
             <Stepper sx={{ background: "#fff", padding: "1rem", width: "100%", borderRadius: "1rem", flexDirection: "column" }} activeStep={activeStep} orientation="vertical" className="stepPi">
                 {steps.map((step, index) => (
                     <Step key={step.label} >
@@ -82,11 +83,14 @@ function StepperWithQuestion() {
             {
                 activeStep === steps.length && (
 
-                    <Card sx={{ p: '1rem' }}>
+                    <>
                         <MainToPdf collectedData={object} />
-                        <Button onClick={() => { setActiveStep(0); setobject({}) }}>Restart</Button>
+                        <Stack sx={{ p: '1rem' }}>
+                            <Button variant='contained' onClick={() => { setActiveStep(0); setobject({}); }}>Restart</Button>
 
-                    </Card>
+                        </Stack>
+                    </>
+
                 )
             }
         </Grid>

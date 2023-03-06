@@ -11,9 +11,15 @@ function StepTwo({ handleBack, handleNext, updateObject, object }) {
         updateObject('stepTwo', value);
     };
     const coinName = object.stepIntro.coinShortName
-    console.log(coinName);
 
+    const validation = (object) => {
+        return object.stepIntro.coinCategory === '' ||
+            object.stepIntro.coinName === '' ||
+            object.stepIntro.coinShortName === '' ||
+            object.overviewDesc === '' ||
+            object.stepThree.coinFRcat === ''
 
+    }
     return (
 
         <>
@@ -52,15 +58,19 @@ function StepTwo({ handleBack, handleNext, updateObject, object }) {
                     </Stack>
                 </Stack>
             </Grid>
+
+
             <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"} >
                 <Button variant='outlined' onClick={handleBack}>
                     Back
                 </Button>
-                <Button variant='outlined' onClick={handleNext}>
-                    Next
-                </Button>
-            </Grid>
+                {!validation(object) &&
+                    <Button variant='outlined' onClick={handleNext}>
+                        Next
+                    </Button>
+                }
 
+            </Grid>
 
         </>
     )

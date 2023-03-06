@@ -132,3 +132,8 @@ a {
     height: 20vmin;
   }
 }
+
+.txtFan {
+  font-family: fantasy !important;
+  font-size: large;
+}

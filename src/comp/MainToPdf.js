@@ -1,10 +1,14 @@
-import { Button } from '@mui/material'
+import { Button, Grid, Paper, Stack, Typography } from '@mui/material'
 import React from 'react'
 import jsPDF from 'jspdf';
 import autoTable from "jspdf-autotable"
 import { imgD } from "./imgbannierpdf";
 import { imgCb } from "./imgcheckbox";
 import { imgRF } from "./imgRedFlag";
+import { imgQR } from "./imageQrTelegram";
+import { imgQrWeb } from "./imageQrWebsite";
+import { imgFooter } from "./imageFooter";
+import { Telegram } from '@mui/icons-material';
 
 function MainToPdf(collectedData) {
     const date = new Date();
@@ -14,47 +18,50 @@ function MainToPdf(collectedData) {
 
     const handleClick = async () => {
         const doc = new jsPDF();
+        const imgData = imgD
 
-        autoTable(doc, {
-            body: [
-                [
-
-                    {
-                        content: ' - ',
-                        styles: {
-                            halign: 'center',
-                            fontSize: 20,
-                            textColor: '#ffffff',
-                            fontStyle: 'bold'
-                        }
-                    }
-                ],
-            ],
-            theme: 'plain',
-            styles: {
-                fillColor: '#a0b4c7',
-            }
-        });
+        doc.addImage(imgData, 'JPEG', 1, 1, 208, 28);
 
         autoTable(doc, {
             head: [
                 [
 
                     {
-                        content: result.collectedData.stepIntro.coinName + " - $" + result.collectedData.stepIntro.coinShortName,
+                        content: result.collectedData.stepIntro.coinName,
                         styles: {
-                            halign: 'center',
-                            fontSize: 20,
-                            textColor: '#ffffff',
+                            halign: 'left',
+                            fontSize: 22,
+                            cellWidth: 'wrap',
+                            valign: 'top',
+                            textColor: '#a0b4c7',
                             fontStyle: 'bold'
                         }
                     }
                 ],
             ],
             theme: 'plain',
-            styles: {
-                fillColor: '#a0b4c7',
-            }
+
+        });
+
+
+        autoTable(doc, {
+            head: [
+                [
+
+                    {
+                        content: "$" + result.collectedData.stepIntro.coinShortName.toUpperCase(),
+                        styles: {
+                            halign: 'center',
+                            fontSize: 32,
+                            cellWidth: 'wrap',
+                            textColor: '#00000',
+                            fontStyle: 'bold'
+                        }
+                    }
+                ],
+            ],
+            theme: 'plain',
+
         });
 
         autoTable(doc, {
@@ -195,27 +202,28 @@ function MainToPdf(collectedData) {
             }
         });
 
+        /* 
+                autoTable(doc, {
+                    body: [
+                        [
+                            {
+                                content: 'A good price to buy :',
+                                styles: {
+                                    halign: 'right'
+                                }
+                            },
+                            {
+                                content: '$0.000002',
+                                styles: {
+                                    halign: 'right'
+                                }
+                            },
+                        ],
+        
+                    ],
+                    theme: 'plain'
+                }); */
 
-        autoTable(doc, {
-            body: [
-                [
-                    {
-                        content: 'A good price to buy :',
-                        styles: {
-                            halign: 'right'
-                        }
-                    },
-                    {
-                        content: '$0.000002',
-                        styles: {
-                            halign: 'right'
-                        }
-                    },
-                ],
-
-            ],
-            theme: 'plain'
-        });
         autoTable(doc, {
             body: [
                 [
@@ -229,6 +237,18 @@ function MainToPdf(collectedData) {
             ],
             theme: "plain"
         });
+
+
+        const imgDataQR = imgQR
+        const imgDataQRW = imgQrWeb
+        const imgDataFooter = imgFooter
+
+        doc.addImage(imgDataFooter, 'JPEG', 1, 270, 208, 28);
+
+        doc.addImage(imgDataQRW, 'JPEG', 182, 270, 22, 24);
+        doc.addImage(imgDataQR, 'JPEG', 155, 270, 22, 22);
+
+        //FOOTER
         autoTable(doc, {
             body: [
                 [
@@ -236,7 +256,9 @@ function MainToPdf(collectedData) {
                         content: 'Terms & notes',
                         styles: {
                             halign: 'left',
-                            fontSize: 14
+                            valign: 'bottom',
+                            fontSize: 14,
+                            textColor: '#000',
                         }
                     }
                 ],
@@ -246,9 +268,13 @@ function MainToPdf(collectedData) {
                             + ' and is not intended to be construed as financial advice. '
                             + '\n@lamachina & @NostraDam do not guarantee the accuracy, completeness, or usefulness of any information.',
                         styles: {
-                            halign: 'left'
+                            halign: 'left',
+                            valign: 'bottom',
+                            cellWidth: 'wrap',
+                            textColor: '#000',
                         }
-                    }
+                    },
+
                 ],
             ],
             theme: "plain",
@@ -256,21 +282,20 @@ function MainToPdf(collectedData) {
 
 
 
-        const imgData = imgD
-        const imgDataCb = imgCb
-        doc.addImage(imgData, 'JPEG', 1, 1, 208, 28);
-
         return doc.save("invoice");
 
     }
 
 
     return (
-        <div>
-
-            <Button onClick={handleClick}>PRINTI</Button>
-
-        </div>
+        <Stack gap={"1rem"} width="60%">
+            <Paper elevation={12} >
+                <Button onClick={handleClick}>GET YOUR REPORT</Button>
+            </Paper>
+            <Paper elevation={4} sx={{ width: "100%" }}>
+                <Typography> <a href='https://t.me/+VGfwiKhC5xA1MTY0' rel="noreferrer" target="_blank">SHARE IT <Telegram /> </a> </Typography>
+            </Paper>
+        </Stack>
     )
 }
 
