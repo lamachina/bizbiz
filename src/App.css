@@ -131,9 +131,35 @@ a {
   .App-logo {
     height: 20vmin;
   }
+
+  .bgone,
+  .bgtwo,
+  .bgthree {
+    background-image: none !important;
+  }
+
+  /* 888888888888888888888888888 */
 }
 
 .txtFan {
   font-family: fantasy !important;
   font-size: large;
+}
+
+.bgone {
+  background-image: url('/src/comp/bgimg/bgone.png');
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.bgtwo {
+  background-image: url('/src/comp/bgimg/bgleft.png');
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.bgthree {
+  background-image: url('/src/comp/bgimg/bgthree.png');
+  background-repeat: no-repeat;
+  background-position: right;
 }

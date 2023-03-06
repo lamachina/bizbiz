@@ -45,19 +45,19 @@ function StepMetrics({ handleNext, updateObject, object, handleBack }) {
 
     return (
 
-        <>
+        <Grid className='bgtwo'>
 
             <Typography pb={"1rem"} variant='h5'>Metrics</Typography>
 
-            <Typography variant='subtitle2' textAlign={"left"}>Report the basics metrics</Typography>
+            <Typography sx={{ background: '#fff' }} width='fit-content' variant='subtitle2' textAlign={"left"}>Report the basics metrics</Typography>
 
             <ul>
                 <li>
-                    <Typography variant='body2' textAlign="left"> <a href='https://coinmarketcap.com/' rel="noreferrer" target="_blank">Coin Market Cap</a> </Typography>
+                    <Typography sx={{ background: '#fff' }} width='fit-content' variant='body2' textAlign="left"> <a href='https://coinmarketcap.com/' rel="noreferrer" target="_blank">Coin Market Cap</a> </Typography>
                 </li>
 
                 <li>
-                    <Typography variant='body2' textAlign="left"> <a href='https://www.dextools.io/app/en/ether' rel="noreferrer" target="_blank">Dextools</a></Typography>
+                    <Typography sx={{ background: '#fff' }} width='fit-content' variant='body2' textAlign="left"> <a href='https://www.dextools.io/app/en/ether' rel="noreferrer" target="_blank">Dextools</a></Typography>
                 </li>
 
 
@@ -65,6 +65,7 @@ function StepMetrics({ handleNext, updateObject, object, handleBack }) {
             <Grid justifyContent={"center"} display="flex" p={"1rem"} flexDirection="column">
                 <Stack pt={"1rem"} gap="1rem" display='flex' flexDirection={'row'} flexWrap='wrap' justifyContent={'center'} >
                     <TextField
+                        sx={{ background: '#fff' }}
                         id="coinMC"
                         label="Market capitalization"
                         variant="outlined"
@@ -73,6 +74,7 @@ function StepMetrics({ handleNext, updateObject, object, handleBack }) {
                         type={'number'}
                     />
                     <TextField
+                        sx={{ background: '#fff' }}
                         id="coinFDV"
                         label="Fully diluted valuation"
                         variant="outlined"
@@ -81,6 +83,7 @@ function StepMetrics({ handleNext, updateObject, object, handleBack }) {
                         type={'number'}
                     />
                     <TextField
+                        sx={{ background: '#fff' }}
                         id="coinTVL"
                         label="Total value locked"
                         variant="outlined"
@@ -102,7 +105,7 @@ function StepMetrics({ handleNext, updateObject, object, handleBack }) {
                 </Button>
             </Grid>
 
-        </>
+        </Grid>
     )
 }
 
