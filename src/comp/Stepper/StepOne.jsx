@@ -2,9 +2,12 @@ import { Box, Button, Divider, Grid, Rating, Slider, Stack, TextField, Typograph
 import React, { useState } from 'react'
 
 function StepOne({ handleNext, handleBack, updateObject, object }) {
+    const [overviewLength, setOverviewLength] = useState(0);
+
 
     const handleChange = (event, value) => {
         updateObject('overviewDesc', event.target.value);
+        setOverviewLength(event.target.value.length);
         console.log(event.target.value);
     };
 
@@ -38,7 +41,7 @@ function StepOne({ handleNext, handleBack, updateObject, object }) {
             <Divider variant='middle' />
             <Grid justifyContent={"center"} display="flex" flexDirection={"column"} flexWrap="wrap" alignItems="center">
                 <Typography pt={"1rem"} variant='overline' fontSize={"80%"} >Explain what is the project about</Typography>
-
+                <Typography variant='caption' color={'secondary'}> {777 - overviewLength} characters left </Typography>
                 <Stack pt={"1rem"} gap="1rem" width={"100%"}>
                     <TextField
                         id="overviewDesc"
@@ -49,6 +52,7 @@ function StepOne({ handleNext, handleBack, updateObject, object }) {
                         multiline
                         rows={5}
                         fullWidth
+                        inputProps={{ maxLength: 777 }}
                     />
                 </Stack>
             </Grid>
