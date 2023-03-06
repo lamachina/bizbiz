@@ -1,31 +1,11 @@
-import { Box, Button, Grid, Rating, Slider, Typography } from '@mui/material'
-import { Stack } from '@mui/system';
+import { Box, Button, Divider, Grid, Rating, Slider, Stack, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
-
-const labels = {
-    0.5: 'Useless',
-    1: 'Useless+',
-    1.5: 'Poor',
-    2: 'Poor+',
-    2.5: 'Ok',
-    3: 'Ok+',
-    3.5: 'Good',
-    4: 'Good+',
-    4.5: 'Excellent',
-    5: 'Excellent+',
-};
-function getLabelText(value) {
-    return `${value} RocketLaunch${value !== 1 ? 's' : ''}, ${labels[value]}`;
-}
 
 function StepOne({ handleNext, handleBack, updateObject, object }) {
-    const [hover, setHover] = React.useState(-1);
-    const [numi, setnumi] = React.useState(2);
 
     const handleChange = (event, value) => {
-        updateObject('stepOne', value);
-        console.log(object);
+        updateObject('overviewDesc', event.target.value);
+        console.log(event.target.value);
     };
 
     return (
@@ -55,32 +35,22 @@ function StepOne({ handleNext, handleBack, updateObject, object }) {
                 </li>
 
             </ul>
-            <Grid justifyContent={"center"} display="flex" flexDirection={"row"} flexWrap="wrap" alignItems="center">
-                <Typography variant='overline' fontSize={"80%"} >What is your first opinion about the project ?</Typography>
-                <Box
-                    p={"0.5rem"}
-                    sx={{
-                        width: 200,
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Rating
-                        name="hover-feedback"
-                        value={object}
-                        precision={0.5}
-                        getLabelText={getLabelText}
+            <Divider variant='middle' />
+            <Grid justifyContent={"center"} display="flex" flexDirection={"column"} flexWrap="wrap" alignItems="center">
+                <Typography pt={"1rem"} variant='overline' fontSize={"80%"} >Explain what is the project about</Typography>
+
+                <Stack pt={"1rem"} gap="1rem" width={"100%"}>
+                    <TextField
+                        id="overviewDesc"
+                        label="Overview"
+                        variant="outlined"
                         onChange={handleChange}
-                        onChangeActive={(event, newHover) => {
-                            setHover(newHover);
-                        }}
-                        icon={<RocketLaunchIcon style={{ opacity: 1 }} fontSize="large" />}
-                        emptyIcon={<RocketLaunchIcon style={{ opacity: 0.8 }} fontSize="large" />}
+                        name="overviewDesc"
+                        multiline
+                        rows={5}
+                        fullWidth
                     />
-                    {numi !== null && (
-                        <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : numi]}</Box>
-                    )}
-                </Box>
+                </Stack>
             </Grid>
             <Grid display={"flex"} justifyContent="space-evenly" p={"1rem"}>
                 <Button variant='outlined' onClick={handleBack}>

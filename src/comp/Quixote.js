@@ -6,6 +6,7 @@ import StepTwo from './Stepper/StepTwo';
 import StepThree from './Stepper/StepThree';
 import StepIntro from './Stepper/StepIntro';
 import MainToPdf from './MainToPdf';
+import StepMetrics from './Stepper/StepMetrics';
 
 function StepperWithQuestion() {
     const [activeStep, setActiveStep] = useState(0);
@@ -41,12 +42,17 @@ function StepperWithQuestion() {
     };
     const stepTwo = () => {
         return (
-            <StepTwo handleNext={handleNext} handleBack={handleBack} updateObject={updateObject} object={object.stepTwo} />
+            <StepTwo handleNext={handleNext} handleBack={handleBack} updateObject={updateObject} object={object} />
         );
     };
     const stepThree = () => {
         return (
             <StepThree handleNext={handleNext} handleBack={handleBack} updateObject={updateObject} object={object.stepThree} />
+        );
+    };
+    const stepMetrics = () => {
+        return (
+            <StepMetrics handleNext={handleNext} handleBack={handleBack} updateObject={updateObject} object={object.stepMetrics} />
         );
     };
 
@@ -55,6 +61,7 @@ function StepperWithQuestion() {
         { label: 'Fundamental', content: stepOne() },
         { label: 'Sentiment', content: stepTwo() },
         { label: 'Token', content: stepThree() },
+        { label: 'Metrics', content: stepMetrics() },
     ];
 
 
