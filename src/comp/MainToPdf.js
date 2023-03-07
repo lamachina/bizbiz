@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, Stack, Typography } from '@mui/material'
+import { Button, Paper, Stack, Typography } from '@mui/material'
 import React from 'react'
 import jsPDF from 'jspdf';
 import autoTable from "jspdf-autotable"
@@ -178,7 +178,6 @@ function MainToPdf(collectedData) {
                 result.collectedData.stepMetrics.coinFDV + ' $',
                 result.collectedData.stepMetrics.coinMCbyTVL,
                 result.collectedData.stepMetrics.coinFDVbyTVL,
-                    ,
                 ],
 
             ],
@@ -282,7 +281,7 @@ function MainToPdf(collectedData) {
 
 
 
-        return doc.save("invoice");
+        return doc.save("SDF_Report_" + result.collectedData.stepIntro.coinShortName);
 
     }
 

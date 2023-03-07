@@ -1,6 +1,5 @@
 import { AppBar, Button, Grid, ThemeProvider } from '@mui/material';
 import './App.css';
-import Form from './comp/Form';
 import { useState } from 'react';
 import { createTheme } from '@mui/material';
 import StepperWithQuestion from "./comp/Quixote"
